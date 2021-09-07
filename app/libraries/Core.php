@@ -1,6 +1,6 @@
 <?php
 
-//Creaza URL-uri si incarca Core Controller
+//Creeaza URL-uri si incarca Core Controller
 //URL Format -/controller/method/params
 
 class Core
@@ -15,21 +15,21 @@ class Core
         $url = $this->getUrl();
 
         //Ne uitam in Controller pentru prima valoare din array, definim calea ca si cum am fii in index.php
-        if ((!empty($url[0]) && file_exists('../app/controllers/' . ucwords($url[0]) . '.php') &&isset($url[0]))) {
-        //verifica daca exista, si setam ca controllerul principal
+        if ((!empty($url[0]) && file_exists('../app/controllers/' . ucwords($url[0]) . '.php') && isset($url[0]))) {
+            //verifica daca exista, si setam ca controllerul principal
             $this->currentController = ucwords($url[0]);
             unset($url[0]);
         }
         //solicitare controller
-        require_once '../app/controllers/'. $this->currentController .'.php';
+        require_once '../app/controllers/' . $this->currentController . '.php';
 
         //Instatiere clasa controller
         $this->currentController = new $this->currentController;
 
         //Verificare pentru a doua parte din url
-        if(isset($url[1])){
+        if (isset($url[1])) {
             //verificare daca metoda exista in controller
-            if(method_exists($this->currentController, $url[1])){
+            if (method_exists($this->currentController, $url[1])) {
                 $this->currentMethod = $url[1];
                 unset($url[1]);
             }
