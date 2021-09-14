@@ -1,21 +1,28 @@
 <?php
 
-class Pages extends Controller {
-    public function __construct(){
-    $this->postModel = $this->model('Post');
+class Pages extends Controller
+{
+    public function __construct()
+    {
+
     }
-    public function index(){
-        $posts = $this->postModel->getPosts();
+
+    public function index()
+    {
+
         $data = [
-            'title' => 'Welcome',
-            'posts'=> $posts
+            'title' => 'Posts',
+            'description'=> 'Simple Social Network built on the CosminMVC php framework'
         ];
         $this->view('pages/index', $data);
 
 
     }
-    public function about(){
-        $data =['title'=>'About Me'];
+
+    public function about()
+    {
+        $data = ['title' => 'About Me',
+            'description'=> 'Simple Social Network built on the CosminMVC php framework'];
         $this->view('pages/about', $data);
 
     }
